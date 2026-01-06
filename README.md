@@ -27,7 +27,8 @@ This demo showcases an AI-enhanced rabies case monitoring system built using Syn
 - **Predictive Analytics**: Calculate percentage changes between last 2 years for proactive planning
 - **Geographical Insights**: State-level breakdown enabling targeted intervention strategies
 
-![AI-Powered Rabies Tracking Dashboard](screenshot.png)
+## Output
+![AI-Powered Rabies Tracking Dashboard](https://github.com/user-attachments/assets/e2ddd252-4e8e-418f-8047-e6d7e0cbeb03)
 
 ## Troubleshooting
 ### Path Too Long Exception
