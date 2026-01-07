@@ -69,7 +69,7 @@
                 <Image Source="/Images/RabisImage.png" Height="70" Width="70" Grid.Column="0"/>
 
                 <StackPanel Margin="10" Grid.Column="1">
-                    <TextBlock Text="AI-Powered Rabis Tracking System" FontSize="26" FontWeight="Bold" Foreground="#f9f7fc"/>
+                    <TextBlock Text="AI-Powered Rabies Tracking System" FontSize="26" FontWeight="Bold" Foreground="#f9f7fc"/>
                     <TextBlock Text="Real-time Rabies Monitoring and Predictive Insights for Enhanced Public Health Response" Margin="0,4" Foreground="#f9f7fc" FontSize="18" FontWeight="Bold"/>
                 </StackPanel>
             </Grid>
