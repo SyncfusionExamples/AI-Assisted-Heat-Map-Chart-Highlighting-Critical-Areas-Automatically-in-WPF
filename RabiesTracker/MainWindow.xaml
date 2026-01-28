@@ -1,0 +1,147 @@
+﻿<Window x:Class="RabiesTracker.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+        xmlns:inputLayout="clr-namespace:Syncfusion.UI.Xaml.TextInputLayout;assembly=Syncfusion.SfTextInputLayout.WPF"
+        xmlns:Notification="clr-namespace:Syncfusion.Windows.Controls.Notification;assembly=Syncfusion.SfBusyIndicator.WPF"
+        xmlns:local="clr-namespace:RabiesTracker"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+
+    <Window.DataContext>
+        <local:RabiesTrackerViewModel x:Name="viewModel" />
+    </Window.DataContext>
+
+    <Window.Resources>
+        <PathGeometry x:Key="SyringeIcon" Figures="M25.300009,27.900024L28.400001,31.5 27.900001,32 24.800009,28.400024z M8.1999988,3.9000244L3.5000009,8.1000061 11.7,17.600006 16.500004,13.400024 15.899998,12.700012 12.399997,15.700012 11.7,14.900024 15.200001,11.900024 13.399997,9.8000183 9.8999967,12.800018 9.0999927,12 12.599994,9 10.800006,6.9000244 7.3000049,9.9000244 6.5999922,9.1000061 10.099994,6.1000061z M8.3999958,1.5L25.000006,20.600006C25.800009,21.5 26.200003,22.700012 26.200003,23.900024 26.200003,25.200012 25.599997,26.600006 24.500006,27.5 23.4,28.400024 22.000006,28.800018 20.700003,28.700012 19.500004,28.600006 18.399998,28 17.599995,27.100006L1.0000004,7.9000244z M5.0999922,0L6.1999983,1.3000183 5.0000014,2.4000244 5.6999983,3.2000122 3.0999913,5.5 2.3999943,4.6000061 1.0999913,5.7000122 0,4.4000244z" />
+        <PathGeometry x:Key="FootprintIcon" Figures="M16.599524,16.686905C20.296603,16.686905 26.991711,24.28085 23.893643,29.076809 22.494633,31.274794 18.198548,27.177836 16.299532,27.177836 14.501531,27.177836 10.604438,31.074814 9.305407,29.076809 6.1073599,24.379849 12.80247,16.686905 16.599524,16.686905z M2.6102974,9.4919438C4.0093665,9.4919438 5.6083898,10.790916 6.807383,12.889902 8.4064059,15.886892 8.4064059,19.383879 6.9074211,20.782856 5.4083748,22.181866 2.8103127,20.882863 1.2112892,17.985878 -0.38669656,14.987911 -0.38669656,11.490923 1.111312,10.091946 1.6113198,9.591949 2.1113274,9.4919438 2.6102974,9.4919438z M29.38976,7.0939488C29.88873,7.0939488 30.488774,7.2939596 30.888745,7.6939511 32.386752,9.0929293 32.386752,12.589916 30.788767,15.587882 29.189744,18.584874 26.69172,19.783871 25.092696,18.384892 23.593649,16.985884 23.593649,13.488897 25.192673,10.491937 26.291689,8.3929515 27.990689,7.0939488 29.38976,7.0939488z M10.272758,0.59818277C12.008328,0.65690003 13.613994,3.1009969 14.001523,6.2949424 14.501531,9.7919297 13.402515,13.089913 11.503438,13.488897 9.7054372,13.888918 7.8064217,11.390918 7.3064141,7.7939563 6.807383,4.2969694 7.9063988,1.0989918 9.8044381,0.60000191L10.104431,0.60000191C10.160651,0.5968769,10.216772,0.59628884,10.272758,0.59818277z M20.296603,0L20.496617,0C22.394658,0.20001077 23.693627,3.2969758 23.394673,6.8939681 23.094618,10.491937 21.395619,13.188911 19.497578,12.989907 17.598563,12.789927 16.299532,9.6919245 16.599524,6.0949621 16.899518,2.5979752 18.497563,-1.6992999E-07 20.296603,0z" />
+
+        <Style TargetType="syncfusion:HeatMapCell">
+            <Setter Property="MinWidth" Value="130"/>
+            <Setter Property="MinHeight" Value="50"/>
+        </Style>
+
+        <Style TargetType="syncfusion:ColumnHeader">
+            <Setter Property="MinWidth" Value="100"/>
+            <Setter Property="MinHeight" Value="40"/>
+        </Style>
+
+        <syncfusion:TableMapping x:Key="itemsMapping">
+            <syncfusion:TableMapping.HeaderMapping>
+                <syncfusion:ColumnMapping PropertyName="State" DisplayName="State"/>
+            </syncfusion:TableMapping.HeaderMapping>
+            <syncfusion:TableMapping.ColumnMapping>
+                <syncfusion:ColumnMapping PropertyName="Y2018" DisplayName="2018"/>
+                <syncfusion:ColumnMapping PropertyName="Y2019" DisplayName="2019"/>
+                <syncfusion:ColumnMapping PropertyName="Y2020" DisplayName="2020"/>
+                <syncfusion:ColumnMapping PropertyName="Y2021" DisplayName="2021"/>
+                <syncfusion:ColumnMapping PropertyName="Y2022" DisplayName="2022"/>
+                <syncfusion:ColumnMapping PropertyName="Y2023" DisplayName="2023"/>
+                <syncfusion:ColumnMapping PropertyName="Y2024" DisplayName="2024"/>
+                <syncfusion:ColumnMapping PropertyName="Y2025" DisplayName="2025"/>
+            </syncfusion:TableMapping.ColumnMapping>
+        </syncfusion:TableMapping>
+    </Window.Resources>
+
+    <Grid Background="#493659">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="2.5*"/>
+            <RowDefinition Height="2.5*"/>
+            <RowDefinition Height="3.5*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="8*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Row="0" Grid.Column="0" Margin="10" Padding="5" CornerRadius="10" Background="#2b1b37" >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.5*"/>
+                    <ColumnDefinition Width="9.5*"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="/Images/RabiesImage.png" Height="70" Width="70" Grid.Column="0"/>
+
+                <StackPanel Margin="10" Grid.Column="1">
+                    <TextBlock Text="AI-Powered Rabies Tracking System" FontSize="26" FontWeight="Bold" Foreground="#f9f7fc"/>
+                    <TextBlock Text="Real-time Rabies Monitoring and Predictive Insights for Enhanced Public Health Response" Margin="0,4" Foreground="#f9f7fc" FontSize="18" FontWeight="Bold"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <Border Grid.Row="0" Grid.Column="1" Margin="10" Padding="5" CornerRadius="10" Background="#2b1b37">
+            <inputLayout:SfTextInputLayout Grid.RowSpan="2" Grid.Column="2" Hint="Location"  ContainerType="Outlined" IsEnabled="{Binding IsEnabled}" FontSize="17" VerticalContentAlignment="Center" 
+                                           HorizontalContentAlignment="Center" Width="200" Margin="8" Foreground="#f9f7fc" FontWeight="Bold" BorderBrush="#6d4e89" FocusedForeground="#f9f7fc" >
+
+                <TextBox x:Name="countryTextBox" Text="{Binding CountryName}" KeyDown="TextBox_KeyDown" TextWrapping="Wrap" HorizontalContentAlignment="Center" Foreground="#f9f7fc" CaretBrush="#f9f7fc"/>
+            </inputLayout:SfTextInputLayout>
+        </Border>
+
+        <Border Grid.Row="1" Grid.RowSpan="3" Grid.Column="0" Margin="10" CornerRadius="15" Background="#2b1b37">
+            <syncfusion:SfHeatMap ItemsSource="{Binding CaseData}"
+                                  HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"                                      
+                                  ItemsMapping="{StaticResource itemsMapping}"                                  
+                                  ColorMappingCollection="{Binding ColorMappingData}">
+            </syncfusion:SfHeatMap>
+        </Border>
+
+        <Border Grid.Row="1" Grid.Column="1" Margin="10" CornerRadius="15" Background="#2b1b37">
+            <StackPanel Margin="20">
+                <TextBlock Text="Most Affected State:" FontSize="20" Foreground="#f9f7fc" FontWeight="Bold" Margin="0,0,0,10"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="15">
+                    <TextBlock Text="{Binding MostAffectedState}" FontSize="20" FontWeight="Bold" Foreground="#f9f7fc" Margin="0,0,10,0"/>
+                    <TextBlock Text="{Binding MostAffectedTrendIndicator}" FontSize="20" FontWeight="Bold" Foreground="{Binding MostAffectedTrendColor}"/>
+                </StackPanel>
+
+                <TextBlock FontSize="18" FontWeight="SemiBold">
+                    <Run Text="{Binding MostAffectedPercentageChange}" Foreground="{Binding MostAffectedTrendColor}" />
+                    <Run Text=" in last 2 years" Foreground="#f9f7fc"/>
+                </TextBlock>
+            </StackPanel>
+        </Border>
+
+        <Border Grid.Row="2" Grid.Column="1" Margin="10" CornerRadius="15" Background="#2b1b37">
+            <StackPanel Margin="20">
+                <TextBlock Text="Least Affected State:" FontSize="20" Foreground="#f9f7fc" FontWeight="Bold" Margin="0,0,0,10"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="15">
+                    <TextBlock Text="{Binding LeastAffectedState}" FontSize="20" FontWeight="Bold" Foreground="#f9f7fc" Margin="0,0,10,0"/>
+                    <TextBlock Text="{Binding LeastAffectedTrendIndicator}" FontSize="20" FontWeight="Bold" Foreground="{Binding LeastAffectedTrendColor}"/>
+                </StackPanel>
+
+                <TextBlock FontSize="18" FontWeight="SemiBold" >
+                    <Run Text="{Binding LeastAffectedPercentageChange}" Foreground="{Binding LeastAffectedTrendColor}" FontWeight="SemiBold"/>
+                    <Run Text=" in last 2 years" Foreground="#f9f7fc"/>
+                </TextBlock>
+            </StackPanel>
+        </Border>
+
+        <Border Grid.Row="3" Grid.Column="1" Margin="10" CornerRadius="15" Background="#2b1b37">
+            <StackPanel Margin="20">
+                <Path Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center" Data="{StaticResource SyringeIcon}" Stroke="#f9f7fc" StrokeThickness="1" Stretch="Uniform" Fill="#FFFFFFFF" Width="68" Height="68" RenderTransformOrigin="0.5,0.5"/>
+
+                <StackPanel Orientation="Horizontal">
+                    <Viewbox Width="20" Height="20" Margin="0, 2, 2, 0">
+                        <Path Data="{StaticResource FootprintIcon}" Stroke="#f9f7fc" StrokeThickness="1" />
+                    </Viewbox>
+
+                    <TextBlock Text="Protecting Communities" FontSize="18" FontWeight="Bold" Foreground="#f9f7fc" TextAlignment="Center" Margin="5"/>
+                </StackPanel>
+
+                <Rectangle Height="2" Fill="#e0d5e0" Margin="0,10,0,10"/>
+
+                <TextBlock Text="Stop Rabies Before It Starts – Vaccinate Today!" FontSize="18" Foreground="#f9f7fc" FontWeight="Bold" TextWrapping="Wrap"
+                           TextAlignment="Center" Margin="0,0,0,3"/>
+            </StackPanel>
+        </Border>
+
+        <Notification:SfBusyIndicator Grid.Row="2" x:Name="busyIndicator" HorizontalAlignment="Center"
+                                      VerticalAlignment="Center" IsBusy="{Binding IsBusy}" AnimationType="Flower" Background="Transparent"/>
+    </Grid>
+
+</Window>
