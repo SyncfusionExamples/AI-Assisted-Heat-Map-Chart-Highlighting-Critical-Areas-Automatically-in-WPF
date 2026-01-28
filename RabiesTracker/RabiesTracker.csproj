@@ -2,22 +2,23 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net9.0-windows</TargetFramework>
+    <TargetFramework>net10.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Images\RabisImage.png" />
     <None Remove="Resources\RabiesData.json" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Images\RabisImage.png">
+    <Content Include="Images\RabiesImage.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <EmbeddedResource Include="Resources\RabiesData.json" />
+    </Content>
+    <EmbeddedResource Include="Resources\RabiesData.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>

@@ -7,12 +7,11 @@
         xmlns:inputLayout="clr-namespace:Syncfusion.UI.Xaml.TextInputLayout;assembly=Syncfusion.SfTextInputLayout.WPF"
         xmlns:Notification="clr-namespace:Syncfusion.Windows.Controls.Notification;assembly=Syncfusion.SfBusyIndicator.WPF"
         xmlns:local="clr-namespace:RabiesTracker"
-        xmlns:System="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
 
     <Window.DataContext>
-        <local:RabisTrackerViewModel x:Name="viewModel" />
+        <local:RabiesTrackerViewModel x:Name="viewModel" />
     </Window.DataContext>
 
     <Window.Resources>
@@ -28,7 +27,7 @@
             <Setter Property="MinWidth" Value="100"/>
             <Setter Property="MinHeight" Value="40"/>
         </Style>
-        
+
         <syncfusion:TableMapping x:Key="itemsMapping">
             <syncfusion:TableMapping.HeaderMapping>
                 <syncfusion:ColumnMapping PropertyName="State" DisplayName="State"/>
@@ -54,7 +53,7 @@
             <RowDefinition Height="2.5*"/>
             <RowDefinition Height="3.5*"/>
         </Grid.RowDefinitions>
-        
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="8*"/>
             <ColumnDefinition Width="2*"/>
@@ -66,7 +65,7 @@
                     <ColumnDefinition Width="0.5*"/>
                     <ColumnDefinition Width="9.5*"/>
                 </Grid.ColumnDefinitions>
-                <Image Source="/Images/RabisImage.png" Height="70" Width="70" Grid.Column="0"/>
+                <Image Source="/Images/RabiesImage.png" Height="70" Width="70" Grid.Column="0"/>
 
                 <StackPanel Margin="10" Grid.Column="1">
                     <TextBlock Text="AI-Powered Rabies Tracking System" FontSize="26" FontWeight="Bold" Foreground="#f9f7fc"/>
@@ -99,7 +98,7 @@
                     <TextBlock Text="{Binding MostAffectedState}" FontSize="20" FontWeight="Bold" Foreground="#f9f7fc" Margin="0,0,10,0"/>
                     <TextBlock Text="{Binding MostAffectedTrendIndicator}" FontSize="20" FontWeight="Bold" Foreground="{Binding MostAffectedTrendColor}"/>
                 </StackPanel>
-                
+
                 <TextBlock FontSize="18" FontWeight="SemiBold">
                     <Run Text="{Binding MostAffectedPercentageChange}" Foreground="{Binding MostAffectedTrendColor}" />
                     <Run Text=" in last 2 years" Foreground="#f9f7fc"/>
@@ -144,4 +143,5 @@
         <Notification:SfBusyIndicator Grid.Row="2" x:Name="busyIndicator" HorizontalAlignment="Center"
                                       VerticalAlignment="Center" IsBusy="{Binding IsBusy}" AnimationType="Flower" Background="Transparent"/>
     </Grid>
+
 </Window>

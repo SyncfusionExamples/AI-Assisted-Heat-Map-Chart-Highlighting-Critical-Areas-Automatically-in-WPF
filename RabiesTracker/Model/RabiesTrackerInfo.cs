@@ -1,6 +1,6 @@
 ﻿namespace RabiesTracker
 {
-    public class RabisTrackerInfo
+    public class RabiesTrackerInfo
     {
         public string State { get; set; }
         

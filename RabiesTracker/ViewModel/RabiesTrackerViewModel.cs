@@ -6,14 +6,14 @@ using System.Windows.Media;
 
 namespace RabiesTracker
 {
-    public class RabisTrackerViewModel : INotifyPropertyChanged
+    public class RabiesTrackerViewModel : INotifyPropertyChanged
     {
         #region Fields
 
         private RabiesTrackerService? rabiesTrackerService;
         private string countryName = "USA";
-        private ObservableCollection<RabisTrackerInfo>? data;
-        private ObservableCollection<RabisTrackerInfo>? loadingData;
+        private ObservableCollection<RabiesTrackerInfo>? data;
+        private ObservableCollection<RabiesTrackerInfo>? loadingData;
         private TableMapping? tableMappingData;
         private bool isEnabled;
         private bool isBusy;
@@ -31,9 +31,9 @@ namespace RabiesTracker
 
         #region Constructor
 
-        public RabisTrackerViewModel()
+        public RabiesTrackerViewModel()
         {
-            DummyData = new ObservableCollection<RabisTrackerInfo>()
+            DummyData = new ObservableCollection<RabiesTrackerInfo>()
             {
                 new() { State = "-", Y2018 = 0, Y2019 = 0, Y2020 = 0, Y2021 = 0, Y2022 = 0, Y2023 = 0, Y2024 = 0, Y2025 = 0},
                 new() { State = "-", Y2018 = 0, Y2019 = 0, Y2020 = 0, Y2021 = 0, Y2022 = 0, Y2023 = 0, Y2024 = 0, Y2025 = 0},
@@ -57,7 +57,7 @@ namespace RabiesTracker
 
         #region Properties
 
-        public ObservableCollection<RabisTrackerInfo>? CaseData
+        public ObservableCollection<RabiesTrackerInfo>? CaseData
         {
             get => data;
             set
@@ -67,7 +67,7 @@ namespace RabiesTracker
             }
         }
 
-        public ObservableCollection<RabisTrackerInfo>? DummyData
+        public ObservableCollection<RabiesTrackerInfo>? DummyData
         {
             get => loadingData;
             set
@@ -342,12 +342,12 @@ namespace RabiesTracker
             }
         }
 
-        internal async Task FetchRabisCaseData(string countryName)
+        internal async Task FetchRabiesCaseData(string countryName)
         {
             rabiesTrackerService = new RabiesTrackerService();
             IsBusy = true;
-            var newRabisData = await rabiesTrackerService.PredictRabisData(countryName);
-            CaseData = new ObservableCollection<RabisTrackerInfo>(newRabisData);
+            var newRabiesData = await rabiesTrackerService.PredictRabiesData(countryName);
+            CaseData = new ObservableCollection<RabiesTrackerInfo>(newRabiesData);
             GenerateDynamicColorMapping();
             CalculateMostAffectedState();
             IsBusy = false;

@@ -7,6 +7,7 @@ using System.Reflection;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Windows;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace RabiesTracker
 {
@@ -27,7 +28,7 @@ namespace RabiesTracker
 
         public RabiesTrackerService()
         {
-            _ = ValidateCredential();            
+            _ = ValidateCredential();
         }
 
         #endregion
@@ -39,8 +40,8 @@ namespace RabiesTracker
         /// for its major states and then generating the corresponding data.
         /// </summary>
         /// <param name="countryName">The country for which to generate data.</param>
-        /// <returns>A list of RabisTrackerInfo objects for the last 8 years.</returns>
-        internal async Task<List<RabisTrackerInfo>> PredictRabisData(string countryName)
+        /// <returns>A list of RabiesTrackerInfo objects for the last 8 years.</returns>
+        internal async Task<List<RabiesTrackerInfo>> PredictRabiesData(string countryName)
         {
             try
             {
@@ -49,8 +50,13 @@ namespace RabiesTracker
 
                 if (states == null || states.Count == 0)
                 {
-                    MessageBox.Show($"Could not determine the major states for '{countryName}'.");
-                    return new List<RabisTrackerInfo>();
+
+                    states = new List<string>
+                    {
+                        "California", "Texas", "Florida", "New York", "Pennsylvania",
+                        "Illinois", "Ohio", "Georgia", "North Carolina", "Michigan"
+                    };
+
                 }
 
 
@@ -61,17 +67,17 @@ namespace RabiesTracker
 
                 //// Step 3: Deserialize the JSON string directly into a list of objects.
                 return !string.IsNullOrEmpty(extratedJsonData)
-                ? JsonSerializer.Deserialize<List<RabisTrackerInfo>>(extratedJsonData) ?? new List<RabisTrackerInfo>()
-                : new List<RabisTrackerInfo>();
+                ? JsonSerializer.Deserialize<List<RabiesTrackerInfo>>(extratedJsonData) ?? new List<RabiesTrackerInfo>()
+                : new List<RabiesTrackerInfo>();
             }
             catch (Exception)
             {
-               MessageBox.Show("Invalid Credential, The data has been retrieved from the previously loaded JSON file.");
-               return GetCurrentDataFromEmbeddedJson();
+                MessageBox.Show("Invalid Credential, The data has been retrieved from the previously loaded JSON file.");
+                return GetCurrentDataFromEmbeddedJson();
             }
         }
 
-        private List<RabisTrackerInfo> GetCurrentDataFromEmbeddedJson()
+        private List<RabiesTrackerInfo> GetCurrentDataFromEmbeddedJson()
         {
             var executingAssembly = typeof(App).GetTypeInfo().Assembly;
 
@@ -80,13 +86,13 @@ namespace RabiesTracker
                 if (stream == null)
                 {
                     // Log or handle the missing resource scenario
-                    return new List<RabisTrackerInfo>();
+                    return new List<RabiesTrackerInfo>();
                 }
 
                 using (var textStream = new StreamReader(stream))
                 {
                     string json = textStream.ReadToEnd();
-                    return JsonSerializer.Deserialize<List<RabisTrackerInfo>>(json) ?? new List<RabisTrackerInfo>();
+                    return JsonSerializer.Deserialize<List<RabiesTrackerInfo>>(json) ?? new List<RabiesTrackerInfo>();
                 }
             }
         }
@@ -96,7 +102,7 @@ namespace RabiesTracker
         /// </summary>
         private async Task<List<string>> GetMajorStatesFromAI(string country)
         {
-            var systemMessage = "You are an AI assistant that provides World rabis case information. Respond only with the requested data and nothing else.";
+            var systemMessage = "You are an AI assistant that provides World rabies case information. Respond only with the requested data and nothing else.";
             var userMessage = $"List the 10 most populous states/provinces of {country} as a single comma-separated string. Example: State1,State2,State3. Do not add any other text.";
 
             string response = await GetAnswerFromGPT(userMessage + " " + systemMessage);
@@ -118,27 +124,27 @@ namespace RabiesTracker
 
             // Improved prompt structure based on your request
             var systemMessage = "You are an AI model specialized in Rabies case tracking. " +
-                                $"Based on the request, generate a realistic but synthetic dataset for rabis cases for the 10 major states of the provided country over the past 8 years ({startYear} to {currentYear}).";
+                                $"Based on the request, generate a realistic but synthetic dataset for rabies cases for the 10 major states of the provided country over the past 8 years ({startYear} to {currentYear}).";
 
             var userMessage = $"Generate the rabies case data for the past 8 years for the states: {statesString}.\n\n" +
                               "Ensure the output follows this structured format:\n\n" +
                               "[\n" +
                               "  {\n" +
                               "    \"State\": \"State Name\",\n" +
-                              "     \"Y{startYear}\": \"Rabis case count for Y{startYear} (any positive number)\",\n" +
-                              "     \"Y{startYear + 1}\": \"Rabis case count for Y{startYear + 1} (any positive number)\",\n" +
-                              "     \"Y{startYear + 2}\": \"Rabis case count for Y{startYear + 2} (any positive number)\",\n" +
-                              "     \"Y{startYear + 3}\": \"Rabis case count for Y{startYear + 3} (any positive number)\",\n" +
-                              "     \"Y{startYear + 4}\": \"Rabis case count for Y{startYear + 4} (any positive number)\",\n" +
-                              "     \"Y{startYear + 5}\": \"Rabis case count for Y{startYear + 5} (any positive number)\",\n" +
-                              "     \"Y{startYear + 6}\": \"Rabis case count for Y{startYear + 6} (any positive number)\",\n" +
-                              "     \"Y{startYear + 7}\": \"Rabis case count for Y{startYear + 7} (any positive number)\",\n" +
-                              "     \"Y{startYear + 8}\": \"Rabis case count for Y{startYear + 8} (any positive number)\",\n" +
+                              "     \"Y{startYear}\": \"Rabies case count for Y{startYear} (any positive number)\",\n" +
+                              "     \"Y{startYear + 1}\": \"Rabies case count for Y{startYear + 1} (any positive number)\",\n" +
+                              "     \"Y{startYear + 2}\": \"Rabies case count for Y{startYear + 2} (any positive number)\",\n" +
+                              "     \"Y{startYear + 3}\": \"Rabies case count for Y{startYear + 3} (any positive number)\",\n" +
+                              "     \"Y{startYear + 4}\": \"Rabies case count for Y{startYear + 4} (any positive number)\",\n" +
+                              "     \"Y{startYear + 5}\": \"Rabies case count for Y{startYear + 5} (any positive number)\",\n" +
+                              "     \"Y{startYear + 6}\": \"Rabies case count for Y{startYear + 6} (any positive number)\",\n" +
+                              "     \"Y{startYear + 7}\": \"Rabies case count for Y{startYear + 7} (any positive number)\",\n" +
+                              "     \"Y{startYear + 8}\": \"Rabies case count for Y{startYear + 8} (any positive number)\",\n" +
                               "  }\n" +
                               "]\n\n" +
                               "Ensure that the generated data reflects plausible trends. The output MUST be only the JSON array.";
 
-            string response = await GetAnswerFromGPT(userMessage + " " + systemMessage);            
+            string response = await GetAnswerFromGPT(userMessage + " " + systemMessage);
             return response;
         }
 
