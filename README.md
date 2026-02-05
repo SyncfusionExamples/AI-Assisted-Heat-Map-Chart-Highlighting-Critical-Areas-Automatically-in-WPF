@@ -34,4 +34,4 @@ This demo showcases an AI-enhanced rabies case monitoring system built using Syn
 ### Path Too Long Exception
 If you are facing a "Path too long" exception when building this example project, close Visual Studio and rename the repository to a shorter name before building the project.
 
-For a detailed step-by-step guide with relevant code snippets, refer to the [AI Assisted Heatmap blog for Highlighting Critical Areas Automatically in WPF]().
+For a detailed step-by-step guide with relevant code snippets, refer to the [AI Assisted Heatmap blog for Highlighting Critical Areas Automatically in WPF](https://www.syncfusion.com/blogs/post/ai-assisted-wpf-heatmap).
